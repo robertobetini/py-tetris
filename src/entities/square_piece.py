@@ -7,3 +7,4 @@ class SquarePiece(Piece):
             [ self.PIECE_CENTER, self.SOLID_BLOCK ],
             [ self.SOLID_BLOCK, self.SOLID_BLOCK ]
         ]
+        

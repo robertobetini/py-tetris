@@ -7,7 +7,8 @@ class Board:
         self.window = window
         self.width = width
         self.height = height
-        self.pieces = [SquarePiece(window, 2, 2)]
+        self.active_piece = SquarePiece(window, 2, 2)
+        self.pieces = []
 
     def display(self):
         self.window.addstr(1, 1, f"+{ self.width * '-' }+")
@@ -17,7 +18,9 @@ class Board:
 
         self.window.addstr(2 + self.height, 1, f"+{ self.width * '-' }+")
 
+        self.active_piece.display()
         for piece in self.pieces:
             piece.display()
 
-    
+    def update(self):
+        self.active_piece.drop()

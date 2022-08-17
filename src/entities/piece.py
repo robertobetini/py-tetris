@@ -15,6 +15,15 @@ class Piece:
             [self.PIECE_CENTER]
         ]
 
+    def drop(self):
+        self.position.y += 1
+
+    def move_right(self):
+        self.position.x += 1
+
+    def move_left(self):
+        self.position.x -= 1
+
     def display(self):
         self.window.addstr(self.position.y, self.position.x, self.PIECE_CHAR)
 
