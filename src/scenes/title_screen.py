@@ -12,34 +12,37 @@ class TitleScreen(Scene):
 
     __selected_position = 0
 
-    def run(self, screen):
-        title_screen_panel = panel.new_panel(screen)
+    def __init__(self, screen):
+        self.screen = screen
+
+    def run(self):
+        title_screen_panel = panel.new_panel(self.screen)
         title_screen_panel.top()
         title_screen_panel.show()
-        screen.clear()
+        self.screen.clear()
 
         while True:
-            self.__display(screen)
+            self.__display()
 
-            key = screen.getch()
+            key = self.screen.getch()
             if self.__is_user_ready(key):
                 break
 
         curses.curs_set(0)
-        screen.clear()
+        self.screen.clear()
         title_screen_panel.hide()
         panel.update_panels()
         curses.doupdate()
 
-    def __display(self, screen):
-        screen.refresh()
-        screen.addstr(1, 50, "--+= PyTetris =+--", curses.A_BOLD)
+    def __display(self):
+        self.screen.refresh()
+        self.screen.addstr(1, 50, "--+= PyTetris =+--", curses.A_BOLD)
 
         for i, item in enumerate(self.MENU):
                 mode = curses.A_NORMAL
                 if i == self.__selected_position:
                     mode = curses.A_REVERSE
-                screen.addstr(3 + i, 50, f'{i}. {item}', mode)
+                self.screen.addstr(3 + i, 50, f'{i}. {item}', mode)
 
     def __is_user_ready(self, key):
         if key in (KEY_UP, self.__ALTERNATIVE_KEY_UP):
@@ -51,3 +54,4 @@ class TitleScreen(Scene):
                 sys.exit()
             else:
                 return True
+                

@@ -1,3 +1,3 @@
 class Scene:
-    def run(self, screen):
+    def run(self):
         raise NotImplementedError()

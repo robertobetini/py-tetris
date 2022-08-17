@@ -13,15 +13,15 @@ curses.start_color()
 screen.keypad(1)
 
 def run(object):
-    title_screen = TitleScreen()
+    title_screen = TitleScreen(screen)
 
-    board = Board(10, 20)
-    tetris = Game(board)
+    board = Board(screen, 10, 20)
+    tetris = Game(screen, board)
 
     os.system('mode con: cols=99 lines=25')
     
-    title_screen.run(screen)
-    tetris.run(screen)
+    title_screen.run()
+    tetris.run()
 
 if __name__ == "__main__":
     curses.wrapper(run)

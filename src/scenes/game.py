@@ -1,21 +1,20 @@
-import curses
-
-from curses import panel, KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT
+from curses import KEY_DOWN, KEY_UP, KEY_LEFT, KEY_RIGHT
 from .scene import Scene
 
 class Game(Scene):
     __ESC = 27
 
-    def __init__(self, board):
+    def __init__(self, screen, board):
+        self.screen = screen
         self.board = board
 
-    def __display(self, screen):
-        screen.refresh()
-        self.board.display(screen)
+    def __display(self):
+        self.screen.refresh()
+        self.board.display()
 
-    def run(self, screen):
+    def run(self):
         key = 0
         while key != self.__ESC:
-            key = screen.getch()
-            self.__display(screen)
+            key = self.screen.getch()
+            self.__display()
     
