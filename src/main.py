@@ -10,7 +10,7 @@ HEIGHT = 20
 X_OFFSET = 5
 Y_OFFSET = 2
 
-def run(object):
+def run(stdscrn):
     main_window = curses.initscr()
     curses.resize_term(30, 100)
 
