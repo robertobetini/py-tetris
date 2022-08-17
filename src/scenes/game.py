@@ -4,17 +4,16 @@ from .scene import Scene
 class Game(Scene):
     __ESC = 27
 
-    def __init__(self, screen, board):
-        self.screen = screen
+    def __init__(self, window, board):
+        self.window = window
         self.board = board
-
-    def __display(self):
-        self.screen.refresh()
-        self.board.display()
 
     def run(self):
         key = 0
         while key != self.__ESC:
-            key = self.screen.getch()
+            key = self.window.getch()
             self.__display()
-    
+
+    def __display(self):
+        self.window.refresh()
+        self.board.display()

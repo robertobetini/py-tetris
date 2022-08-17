@@ -1,6 +1,6 @@
 class Piece:
-    def __init__(self, screen):
-        self.screen = screen
+    def __init__(self, window):
+        self.window = window
 
     def display(self):
         pass

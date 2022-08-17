@@ -1,13 +1,14 @@
 class Board:
-    def __init__(self, screen, width=10, height=20):
-        self.screen = screen
+    def __init__(self, window, width=10, height=20):
+        self.window = window
         self.width = width
         self.height = height
+        self.pieces = []
 
     def display(self):
-        self.screen.addstr(1, 60, "+----------+")
+        self.window.addstr(1, 1, "+----------+")
 
         for i in range(self.height):
-            self.screen.addstr(2 + i, 60, "|          |")
+            self.window.addstr(2 + i, 1, "|          |")
 
-        self.screen.addstr(2 + self.height, 60, "+----------+")
+        self.window.addstr(2 + self.height, 1, "+----------+")
